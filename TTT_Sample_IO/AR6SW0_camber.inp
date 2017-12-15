@@ -12,7 +12,7 @@ VORLAX - SIMPLE AR6 WING
      0   0.00     0.00     0.00     0.00     1.00
 *
 *NPAN      SREF    CBAR       XBAR     ZBAR     WSPAN
-     1.00   600.     10.       2.5      0.       60.
+     1   600.     10.       2.5      0.       60.
 *
 *
 * WING 
