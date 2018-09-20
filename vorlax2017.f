@@ -1997,11 +1997,13 @@ C...
 CLVB 190  IF (NAP .LT. 3) GO TO 280
 CLVBS
  190  IF (NAP .LT. 3) THEN
-          WRITE(97, *) I, X1, Y1, Z1
-          WRITE(97, *) I, X2, Y2, Z2
-          WRITE(97, *) I, X2 + CORD2, Y2, Z2 + CORD2 * SIN(AINC2(I))
-          WRITE(97, *) I, X1 + CORD1, Y1, Z1 + CORD1 * SIN(AINC1(I))
-          WRITE(97, *) I, X1, Y1, Z1 
+          WRITE(97, *) I, X1, Y1, Z1, IQUANT(I)
+          WRITE(97, *) I, X2, Y2, Z2, IQUANT(I)
+          WRITE(97, *) I, X2 + CORD2, Y2, Z2 + CORD2 * SIN(AINC2(I)),
+     * IQUANT(I)
+          WRITE(97, *) I, X1 + CORD1, Y1, Z1 + CORD1 * SIN(AINC1(I)),
+     * IQUANT(I)
+          WRITE(97, *) I, X1, Y1, Z1 , IQUANT(I)
           GO TO 280
       ENDIF
 CLVBE
@@ -2055,16 +2057,18 @@ CLVB      WRITE (7, 80)  (ZC2 (JJ), JJ = 1, NAP)
         WRITE(7, 80) XAF(JJ), ZC1(JJ), ZC2(JJ)	  
       END DO
 C     WRITE WIRE FRAME DATA TO FILE
-      WRITE(97, *) I, X1, Y1, Z1
+      WRITE(97, *) I, X1, Y1, Z1, IQUANT(I)
       DO JJ = 1, NAP
         WRITE(97, *) I, X2 + XAF(JJ) / 100. * CORD2, Y2,
      *               Z2 + XAF(JJ) / 100. * CORD2 * SIN(AINC2(I)) +
-     *               ZC2(JJ) / 100. * COS(AINC2(I)) * CORD2
+     *               ZC2(JJ) / 100. * COS(AINC2(I)) * CORD2,
+     *               IQUANT(I)
       END DO
       DO JJ = NAP, 1, -1
         WRITE(97, *) I, X1 + XAF(JJ) / 100. * CORD1, Y1,
      *               Z1 + XAF(JJ) / 100. * CORD1 * SIN(AINC1(I)) +
-     *               ZC1(JJ)/100. * COS(AINC1(I)) * CORD1
+     *               ZC1(JJ)/100. * COS(AINC1(I)) * CORD1,
+     *               IQUANT(I)
       END DO
 CLVBE
       ZLE1 (I) = ZC1 (1)
