@@ -50,19 +50,21 @@ panelNums = np.unique(panelData[0:,0:1])
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 
-# Plot	the Vorlax wireframe	(output is right side)
+# Plot the Vorlax wireframe	(one side)
 for index in panelNums:
     ax.plot_wireframe(
-    panelData[panelData[:,0]==index][:,np.array([False,True,False,False])],
-    panelData[panelData[:,0]==index][:,np.array([False,False,True,False])],
-    panelData[panelData[:,0]==index][:,np.array([False,False,False,True])])
+    panelData[panelData[:,0]==index][:,np.array([False,True,False,False,False])],
+    panelData[panelData[:,0]==index][:,np.array([False,False,True,False,False])],
+    panelData[panelData[:,0]==index][:,np.array([False,False,False,True,False])])
 
-# Plot the left-hand side - ASSUMES SYMMETRICAL CONFIGURATION!!!
+# Plot the mirror image (if symmetry is indicated in wire file)
 for index in panelNums:
-    ax.plot_wireframe(
-    panelData[panelData[:,0]==index][:,np.array([False,True,False,False])],
-    -1*panelData[panelData[:,0]==index][:,np.array([False,False,True,False])],
-    panelData[panelData[:,0]==index][:,np.array([False,False,False,True])])
+    symFlag=panelData[panelData[:,0]==index][0,np.array([False,False,False,False,True])]
+    if symFlag==0 or symFlag==2:
+        ax.plot_wireframe(
+        panelData[panelData[:,0]==index][:,np.array([False,True,False,False,False])],
+        -1*panelData[panelData[:,0]==index][:,np.array([False,False,True,False,False])],
+        panelData[panelData[:,0]==index][:,np.array([False,False,False,True,False])])
 
 # Format plot
 ax.grid()
