@@ -244,7 +244,7 @@ CLVBS Use explicit filenames instead of names based on "fort" units
       OPEN(UNIT=6, FILE='VORLAX.OUT', ACTION='WRITE')
       OPEN(UNIT=7, FILE='VORLAX.LOG', ACTION='WRITE')
       OPEN(UNIT=97, FILE='VORLAX.WIRE', ACTION='WRITE')
-      WRITE(6, 120)
+      WRITE (6, 120)
 CLVBE
       WRITE (7,*) ' ** VORLAX 2017  ** '
       WRITE (7,*)
@@ -314,7 +314,7 @@ C
  90    CONTINUE
 100   CONTINUE
 110   WRITE (7, *) 'NORMAL TERMINATION'
-120   FORMAT ('MACH(IQ), ALFA(IH),      PSI,   PITCHQ,    ROLLQ,',
+120   FORMAT ('    MACH,     ALFA,      PSI,   PITCHQ,    ROLLQ,',
      &        '    YAWQ,           HAG,         SREF,',
      &        '         CBAR,        WSPAN,         XBAR,',
      &        '         ZBAR,       CLSTAB,       CDSTAB,',
@@ -3303,7 +3303,7 @@ C      OUTPUT - MAR 2004, TT
       WRITE (6, 321) MACH(IQ),ALPHA(IH),PSI,PITCHQ,ROLLQ,YAWQ,
      &               HAG,SREF,CBAR,WSPAN,XBAR,ZBAR,
      &               CLSTAB,CDSTAB,CYSTAB,CMSTAB,CRSTAB,CNSTAB
- 321  FORMAT ( 6(F8.4,', '), 6(F12.4,', '), 6(F12.5,', '), F12.5)
+ 321  FORMAT (6(F8.4,', '), 6(F12.4,', '), 5(F12.5,', '), F12.5)
       WRITE (7, 320) SREF, WSPAN, CBAR, CLTOT, CDTOT, CYTOT, CMTOT,
      * CRTOT, CNTOT
       IF (CLTOT .EQ. 0.) GO TO 340
