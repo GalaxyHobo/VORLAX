@@ -1,11 +1,16 @@
 # -*- coding: utf-8 -*-
 """
 VorRun
-Plots wireframe output in 2017 version of Vorlax
+Runs Vorlax and plots wireframe output from 2017 version of Vorlax
 
 NOTE! Type: "%matplotlib auto" in iPython console to 
 switch to interactive plots, or "%matplotlib inline" 
 to switch to inline, in the console.
+
+# Note! Reads path to Vorlax .exe in "path.txt" fill that must reside
+# in same directory as vorRun.py. The path in that file must be on the 
+# first line and begin with drive letter + colon, or "\". Assumes
+# C-drive if begins with "\".
 
 Lance Bays
 12/13/2017
@@ -18,13 +23,17 @@ import numpy as np
 
 # Establish working directory with exe...
 # Copy & paste absolute path on Local machine here within double quotes
-userExePath = "C:\AeroProgs\Vorlax\VORLAX"
+
+# Read path to working directory
+fout = open("path.txt", 'r')
+userExePath=fout.readline()
+fout.close()
 
 # Split drive Letter from path
 drive, exePath = userExePath.split("\\", 1)
 
 # Handle case where user doesn't include drive in path —
-# we will assume it's on the C drive 
+# we will assume it's on the C drive.  
 if not drive: drive="C:"
 
 # Run program
