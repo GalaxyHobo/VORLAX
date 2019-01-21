@@ -1,19 +1,20 @@
 # -*- coding: utf-8 -*-
 """
 VorRun
-Runs Vorlax and plots wireframe output from 2017 version of Vorlax
+
+Runs Vorlax and plots wireframe output from Vorlax
+(https://github.com/GalaxyHobo/VORLAX)
 
 NOTE! Type: "%matplotlib auto" in iPython console to 
 switch to interactive plots, or "%matplotlib inline" 
 to switch to inline, in the console.
 
-# Note! Reads path to Vorlax .exe in "path.txt" fill that must reside
-# in same directory as vorRun.py. The path in that file must be on the 
-# first line and begin with drive letter + colon, or "\". Assumes
-# C-drive if begins with "\".
+NOTE! Reads path to Vorlax .exe in "path.txt" file that resides in
+same directory as vorRun.py. The path in that file must be on the 
+first line and begin with drive letter + colon, or "\". Assumes
+C-drive if path begins with "\".
 
 Lance Bays
-12/13/2017
 """
 
 import os
